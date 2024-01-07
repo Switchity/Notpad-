@@ -1,0 +1,9 @@
+
+Docker installation
+# if 
+ dism.exe/online/enable-feature/featurename:Microsoft-Windows-Subsystem-Linux/all/norestart
+ 
+ or 
+ 
+ # visit and https://www.youtube.com/watch?v=Vj35f6L9TCA open powershel and run this command 
+ set HypervirsorLaunchType auto
