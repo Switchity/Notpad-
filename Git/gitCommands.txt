@@ -5,7 +5,155 @@ password:9984@khargoshCP
 
 Git Commands
 
+		>> git clone "repo name"
+		>> git submodule update --init --recursive
+		>> git commit -m "Committing changes in Task_1_AddingModules branch"
+		>> git push -u origin Task_1_AddingModules
+		>> git push origin Task_1_AddingModules
 
-1. git clone "repo"
-2. git submodule update --init --recursive
 
+===========================================================================
+
+The default branch has been renamed!
+main is now named master
+
+If you have a local clone, you can update it by running the following commands.
+
+git branch -m main master
+git fetch origin
+git branch -u master master
+git remote set-head origin -a
+
+==============================================================================
+
+(venv) PS D:\Brighter_layer\PythonConcepts> git branch
+  AddingDirectory
+  Task11_Exception_handling
+  Task12_ThreadingConcepts
+  Task2_Data_type_in_python
+* Task4_ConditionalStatments
+  Task8_Object_oriented_programming
+  codewrite
+  delete_main_file
+  master
+(venv) PS D:\Brighter_layer\PythonConcepts> git push
+fatal: The upstream branch of your current branch does not match
+on the remote, use
+
+    git push . HEAD:Task2_Data_type_in_python
+
+To push to the branch of the same name on the remote, use
+
+    git push . HEAD
+
+To avoid automatically configuring an upstream branch when its name
+won't match the local branch, see option 'simple' of branch.autoSetupMerge
+in 'git help config'.
+
+(venv) PS D:\Brighter_layer\PythonConcepts> git branch
+  AddingDirectory
+  Task11_Exception_handling
+  Task12_ThreadingConcepts
+  Task2_Data_type_in_python
+* Task4_ConditionalStatments
+  Task8_Object_oriented_programming
+  codewrite
+  delete_main_file
+  master
+(venv) PS D:\Brighter_layer\PythonConcepts> 
+
+---------------------------------------------------------
+
+(venv) PS D:\Brighter_layer\PythonConcepts> git push -u origin Task4_ConditionalStatments
+Enumerating objects: 15, done.
+Counting objects: 100% (12/12), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (8/8), done.
+Writing objects: 100% (8/8), 708 bytes | 354.00 KiB/s, done.
+Total 8 (delta 5), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (5/5), completed with 1 local object.
+remote:
+remote: Create a pull request for 'Task4_ConditionalStatments' on GitHub by visiting:
+remote:      https://github.com/Switchity/PythonConcepts/pull/new/Task4_ConditionalStatments
+remote:
+To https://github.com/Switchity/PythonConcepts.git
+ * [new branch]      Task4_ConditionalStatments -> Task4_ConditionalStatments
+branch 'Task4_ConditionalStatments' set up to track 'origin/Task4_ConditionalStatments'.
+(venv) PS D:\Brighter_layer\PythonConcepts> 
+
+
+
+
+======================================================================================
+chandan@DESKTOP-30TI9I8 MINGW64 /d/Brighter_layer/PythonConcepts (master)
+$ git pull
+Your configuration specifies to merge with the ref 'refs/heads/main'
+from the remote, but no such ref was fetched.
+
+
+solution:
+	chandan@DESKTOP-30TI9I8 MINGW64 /d/Brighter_layer/PythonConcepts (master)
+	$ git branch --set-upstream-to=origin/master master
+	branch 'master' set up to track 'origin/master'.
+
+	chandan@DESKTOP-30TI9I8 MINGW64 /d/Brighter_layer/PythonConcepts (master)
+	$ git pull
+	Already up to date.
+
+
+=====================================================
+
+see the log of commit 
+>>git log
+and to quit :just press q keyword
+====================================================================================
+
+
+Problem :
+			$ git push
+			fatal: The upstream branch of your current branch does not match
+			the name of your current branch.  To push to the upstream branch
+			on the remote, use
+
+				git push . HEAD:main
+
+			To push to the branch of the same name on the remote, use
+
+				git push . HEAD
+
+			To avoid automatically configuring an upstream branch when its name
+			won't match the local branch, see option 'simple' of branch.autoSetupMerge
+			in 'git help config'
+
+Solution :
+			git push origin Task_1_adding_modules
+========================================================================================
+changin the name of main into master:
+
+git branch -m main master
+git fetch origin
+git branch -u origin/master master
+git remote set-head origin -a
+----------------------------------------------------------------------
+
+chandan@DESKTOP-30TI9I8 MINGW64 /d/Brighter_layer/PytestConcepts (main)
+$ git branch -m main master
+
+chandan@DESKTOP-30TI9I8 MINGW64 /d/Brighter_layer/PytestConcepts (master)
+$ git fetch origin
+
+chandan@DESKTOP-30TI9I8 MINGW64 /d/Brighter_layer/PytestConcepts (master)
+$ git branch -u origin/master master
+branch 'master' set up to track 'origin/master'.
+
+chandan@DESKTOP-30TI9I8 MINGW64 /d/Brighter_layer/PytestConcepts (master)
+$ git remote set-head origin -a
+origin/HEAD set to master
+
+chandan@DESKTOP-30TI9I8 MINGW64 /d/Brighter_layer/PytestConcepts (master)
+$ git branch 
+  FNVZONAL-2001
+  Task_1_adding_modules
+* master
+
+============================================================================================
