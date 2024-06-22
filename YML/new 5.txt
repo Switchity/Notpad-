@@ -1,0 +1,76 @@
+# # Write a python program to make vowels capital in a string.
+# # Example:
+# strng = "hi hello"
+# # ans : "hI hEllO"
+
+# # def capt(s):
+# #     m = []
+# #     for i in s:
+# #         if i in ['a', 'e','i','o','u']:
+# #             m.append(i.upper())
+# #         else:
+# #             m.append(i)
+# #     return (''.join(m))
+
+# # print(capt(strng))
+
+# Write a program to get user input for n number of employee names and their id, age and salary and form a dictionary.
+ 
+# Example output: 
+# { "<emp1_name>" :{"ID": 001, "Age":25, "Salary":25000},
+# "<emp2_name>" :{"ID": 002, "Age":27, "Salary":25000}, 
+# ... 
+# "<empn_name>" :{"ID": 00N, "Age":26, "Salary":25000}}
+# has context menu
+
+# name = input("Enter the Employee Name:")
+# id = input("Enter the Id: ")
+# age = input("Enter your age:")
+# sal = input("eneter the salary of employee:")
+
+
+# def emp_details(name,id,age,sal):
+#     d = {"Name":None, "ID":None, "AGE":None,'salary':None}
+#     if name not in d:
+#         d[Name]= name
+#     elif id not in d:
+#         d[ID] = id
+#     elif age not in d:
+#         d[AGE]=age
+#     elif sal not in d:
+#         d[Salary] = sal
+#     else:
+#         pass
+#     return d
+
+# print(emp_details(name,id,age,sal))
+    
+
+def get_employee_data():
+    employees = {}
+    
+    n = int(input("Enter the number of employees: "))
+    
+    for i in range(n):
+        name = input(f"Enter the name of employee {i+1}: ")
+        emp_id = int(input(f"Enter the ID of {name}: "))
+        age = int(input(f"Enter the age of {name}: "))
+        salary = float(input(f"Enter the salary of {name}: "))
+        
+        employees[name] = {
+            "ID": emp_id,
+            "Age": age,
+            "Salary": salary
+        }
+    
+    return employees
+
+if __name__ == "__main__":
+    employee_data = get_employee_data()
+    print(employee_data)
+       
+        
+            
+            
+        
+          
