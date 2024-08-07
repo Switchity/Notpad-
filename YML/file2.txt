@@ -1,0 +1,70 @@
+In Django, the concept of a "Controller" does not exist as a separate component in the architecture. Instead, the functionality of the Controller is implemented by the View and the URL dispatcher.
+
+The View in Django is responsible for handling the business logic and service layer logic of the application, which is similar to the functionality of a Controller in other web frameworks. The View processes the web request, interacts with the Model to retrieve data, and prepares the data to be displayed in the Template.
+
+The URL dispatcher in Django is responsible for mapping the web request to the appropriate View function or class. The URL dispatcher is defined in a Python file named urls.py, which is located in the application folder. The URL dispatcher uses regular expressions to match the URL patterns in the request to the appropriate View function or class.
+
+The combination of the View and the URL dispatcher in Django provides the functionality of a Controller. The View handles the business logic and service layer logic, while the URL dispatcher maps the request to the appropriate View.
+
+Overall, the architecture of Django is based on the Model-View-Template (MVT) pattern, which is a variation of the Model-View-Controller (MVC) pattern. 
+
+The View in Django is responsible for the functionality of the Controller, while the URL dispatcher maps the request to the appropriate View. By using this architecture, you can create a flexible and powerful web application that responds to user requests in a dynamic way.
+name: Switchity Network
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.8'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Set up PostgreSQL database
+        run: |
+          sudo apt-get install -y postgresql
+          sudo service postgresql start
+          echo "host all all 127.0.0.1/32 trust" | sudo tee -a /etc/postgresql/*/main/pg_hba.conf
+          echo "host all all ::1/128 trust" | sudo tee -a /etc/postgresql/*/main/pg_hba.conf
+          sudo service postgresql restart
+          sudo -u postgres psql -c "CREATE DATABASE Sw_Networks;"
+        shell: /usr/bin/bash -e {0}
+
+      - name: Check directory structure
+        run: ls -R
+        
+      - name: Set up Django application
+        run: |
+          cd   # Replace with the actual path to your project directory
+          python manage.py migrate
+          python manage.py runserver 0.0.0.0:8000
+        shell: /usr/bin/bash -e {0}
+        env:
+          PYTHONPATH: /opt/hostedtoolcache/Python/3.8.18/x64
+          PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.8.18/x64/lib/pkgconfig
+          DJANGO_SETTINGS_MODULE: Networks.settings
+          DATABASE_URL: postgres://postgres@localhost:5432/Sw_Networks
+
+      - name: Run tests
+        run: |
+          cd .:  # Ensure you are in the correct directory
+          python manage.py test
+        shell: /usr/bin/bash -e {0}
+        env:
+          DJANGO_SETTINGS_MODULE: Networks.settings
